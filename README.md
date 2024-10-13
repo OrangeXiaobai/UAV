@@ -1,6 +1,6 @@
 #### 训练日志
 
-[UAV/train/train_log.txt at main · OrangeXiaobai/UAV (github.com)](https://github.com/OrangeXiaobai/UAV/blob/main/train/train_log.txt)
+[UAV/train_B/train_log.txt at main · OrangeXiaobai/UAV (github.com)](https://github.com/OrangeXiaobai/UAV/blob/main/train_B/train_log.txt)
 
 ```
 Epoch: 1, Loss: 4.532708759901588, Accuracy: 0.02385589094449854
@@ -29,7 +29,7 @@ Epoch: 400, Loss: 0.0612072386210188, Accuracy: 0.991784323271665
 
 #### 推理日志
 
-[UAV/train/inference_log.txt at main · OrangeXiaobai/UAV (github.com)](https://github.com/OrangeXiaobai/UAV/blob/main/train/inference_log.txt)
+[UAV/train_B/inference_log.txt at main · OrangeXiaobai/UAV (github.com)](https://github.com/OrangeXiaobai/UAV/blob/main/train_B/inference_log.txt)
 
 ```
 Sample 0, Predictions: [9.35841234e-28 9.72343720e-24 0.00000000e+00 8.07245325e-33
