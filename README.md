@@ -1,3 +1,92 @@
+#### 1. 项目说明
+
+本项目旨在使用深度学习方法识别来自无人机捕获的人体行为。使用卷积神经网络（CNN）对关键点数据进行训练和推理，进而实现对动作的分类。
+
+#### 2. 环境配置
+
+##### 2.1 硬件环境
+
+- **GPU**: 1 x RTX 3080 Ti (12GB)
+- **CPU**: 12 vCPU Intel(R) Xeon(R) Silver 4214R CPU @ 2.40GHz
+- **内存**: 90GB
+- 硬盘:
+  - 系统盘: 30 GB
+  - 数据盘: 50 GB
+
+##### 2.2 软件环境
+
+- **操作系统**: Ubuntu 22.04
+- **Python**: 3.10
+- **CUDA**: 11.8
+- **Miniconda**: conda3
+
+#### 3. 数据位置
+
+##### 3.1 数据集
+
+数据集包含以下文件：
+
+- `data/train_joint.npy`：训练数据，形状为 (16432, 3, 300, 17, 2)
+- `data/train_label.npy`：训练标签，形状为 (16432,)
+- `data/test_joint_A.npy`：测试数据A，形状为 (2000, 3, 300, 17, 2)
+- `data/test_label_A.npy`：测试标签A，形状为 (2000,)
+- `data/test_joint_B.npy`：测试数据B，无标签，形状为 (4599, 3, 300, 17, 2)
+
+##### 3.2 数据预处理
+
+数据预处理包括将 `train_joint.npy` 和 `test_joint_A.npy` 进行维度调整和归一化处理，具体方法已在代码中实现。
+
+#### 4. 训练参数设置
+
+以下是训练过程中使用的参数设置：
+
+- **批次大小（Batch Size）**: 32
+- **训练周期（Epochs）**: 300
+- **损失函数**: 交叉熵损失（CrossEntropyLoss）
+- **优化器**: Adam优化器
+
+#### 5. 运行方式
+
+##### 5.1 训练模型
+
+运行以下代码以训练模型并保存训练日志：
+
+```
+python train_B.py
+```
+
+### 5.2 进行推理
+
+如果需要对没有标签的测试集 `test_joint_B.npy` 进行推理，运行以下代码：
+
+```
+bash
+
+
+复制代码
+python inference.py
+```
+
+## 6. 结果复现
+
+在成功运行训练代码后，将生成以下文件：
+
+- `train7/train_log.txt`：训练日志，记录每个 epoch 的损失和准确率。
+- `train7/inference_log.txt`：推理日志，记录每个样本的预测结果。
+- `train7/pred7.npy`：保存测试数据的预测置信度，形状为 (2000, 155)。
+
+### 6.1 预测结果说明
+
+`pred7.npy` 文件包含对 `test_joint_B.npy` 中 2000 个样本在 155 个动作类别上的预测置信度。每一行对应一个样本，包含 155 个类别的置信度值。
+
+### 6.2 准确率计算
+
+若后续获得标签数据，可通过计算预测结果与真实标签的匹配度来评估模型的准确率。
+
+## 7. 联系方式
+
+如有疑问，请联系项目负责人：[邮箱地址]
+
 #### 训练日志
 
 [UAV/train_B/train_log.txt at main · OrangeXiaobai/UAV (github.com)](https://github.com/OrangeXiaobai/UAV/blob/main/train_B/train_log.txt)
